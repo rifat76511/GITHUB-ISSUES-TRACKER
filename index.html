@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub-Issues-Tracker</title>
+    <!-- page icon -->
+    <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+    <!-- font family -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <!-- daisyui and tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- style with css -->
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+    <main class="w-11/12 mx-auto justify-center  items-center flex">
+        <section class=" flex items-center flex-col bg-base-200 p-6 mt-36 shadow-2xl rounded-xl space-y-6">
+            <img src="./assets/github-logo.png" alt="">
+            <div class="text-center">
+                <h2 class="font-bold text-2xl">GitHub Issues Tracker</h2>
+            <p class="opacity-50">Sign in to manage your issues</p>
+            </div>
+            <div id="login-section">
+                <fieldset class="fieldset  rounded-box w-xs p-4">
+
+
+                    <label class="label font-semibold text-neutral">Username</label>
+                    <input type="text" class="input w-full rounded-lg" placeholder="Enter Username" />
+                    <p class="text-primary mb-2"> Default: admin</p>
+
+                    <label class="label font-semibold text-neutral">Password</label>
+                    <input type="password" class="input w-[456px] rounded-lg" placeholder="Enter Password" />
+                    <p class="text-primary mb-2">Default: admin123</p>
+
+                    <button class="btn btn-primary mt-4 rounded-xl mb-4">Sign In</button>
+
+                    <div class="flex justify-between items-center gap-1 mb-2">
+                        <hr class=" w-full opacity-30">
+                        <h2 class="text-lg">OR</h2>
+                        <hr class="w-full opacity-30">
+                    </div>
+                    <div class="text-center mb-1">
+                        <p class="opacity-70">Demo Credentials:</p>
+                    </div>
+                    <div class="text-center bg-[#f0f4f8] rounded-lg p-6">
+                        <p class="text-sm"><span class=" font-bold">Username:</span> admin
+                        </p>
+                        <p class="text-sm">
+                            <span class=" font-bold">Password:</span> admin123</p>
+                    </div>
+                </fieldset>
+            </div>
+        </section>
+    </main>
+    <!-- script for login -->
+     <script src="./script/login.js"></script>
+</body>
+
+</html>
