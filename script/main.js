@@ -177,7 +177,7 @@ async function issuesInfo(id){
                         <div class="space-y-4">
                             <h2 class="text-xl font-bold ">${data.title}</h2>
                             <div class="flex items-center ">
-                            <div class="badge bg-green-600 text-white">${data.status}</div>  
+                            <div class="badge  text-white ${data.status == "open" ? "bg-green-600" : "bg-[#A855F7]"}">${data.status == "open" ? "Opened" : "Closed"}</div>  
                             <span class="text-gray-500">. Opened by ${data.author} .
                                 ${new Date(data.updatedAt).toLocaleDateString()}</span></div>
                             <div class="flex gap-3">
