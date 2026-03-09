@@ -7,21 +7,31 @@ const closedBtn =document.getElementById("closed-btn");
 let counts =document.getElementById("count-issues");
 let loadingSection =document.getElementById("loading-section");
 const issueDitais = document.getElementById("iassueDitail");
+
 async function allIssues (){
+    removeLoading(true)
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const json = await res.json();
     issueAllCardInfo =json.data;
     allCard(json.data);
-    console.log(issueAllCardInfo);
+    removeLoading(false);
+    // console.log(issueAllCardInfo);
 }
-// loading section 
-function remove(){
-
-} 
 // count function
 function countIssues(countValue){
      counts.innerText= countValue;
 }
+// loading section 
+function removeLoading(status){
+    if(status == true){
+        loadingSection.classList.remove("hidden");
+        allIssuesCar.classList.add("hidden");
+    }else{
+        loadingSection.classList.add("hidden");
+        allIssuesCar.classList.remove("hidden");
+    }
+}
+
 // all btn
 function allbtnActive(id){
 
@@ -35,7 +45,7 @@ issuesBtn.classList.add("btn-primary")
 
 const allCard =(issues)=>{
     issues.forEach(issue => {
-let labelsHTML = "";
+      let labelsHTML = "";
         issue.labels.forEach(label => {
             let badgeClass = "bg-gray-100 text-gray-600";
             
@@ -57,10 +67,11 @@ let labelsHTML = "";
             labelsHTML += `<div class="badge border-none font-bold text-[10px] uppercase p-3 ${badgeClass}">${label}</div>`;
         });
     const card = document.createElement("div");
+    card.setAttribute("onclick", `issuesInfo(${issue.id})`);
     card.className =` shadow-xl p-7 rounded-lg border-t-4 ${issue.status == "open" ? "border-green-500" : "border-[#A855F7]"}`;
     card.innerHTML =`
      <div class="flex justify-between mb-4">
-                        <img src="./assets/${issue.status == "open" ? "Open-Status.png" : "Closed- Status .png"}" alt="">
+                        <img  src="./assets/${issue.status == "open" ? "Open-Status.png" : "Closed- Status .png"}" alt="" >
                         <div class="badge badge-soft ${issue.priority == "high" ? "badge-error" :issue.priority == "medium" ? "badge-warning" : "bg-[#EEEFF2]"}">${issue.priority}</div>
 
                     </div>
@@ -84,49 +95,95 @@ let labelsHTML = "";
     
 });
 }
+// search section 
+const serchBtn = document.getElementById("Search-btn").addEventListener("click", () =>{
+    removeLoading(true);
+    allIssuesCar.innerHTML ="";
+    const searchBox = document.getElementById("Search-box");
+    let issuesFilterCard = searchBox.value.trim().toLowerCase();
+    fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${issuesFilterCard}`)
+    .then(res => res.json())
+    .then(json => {
+     const filterCard =json.data;
+    
+     allCard(filterCard);
+     removeLoading(false);
+    countIssues(filterCard.length);
+    })
+})
 function filterIssues(status){
+    removeLoading(true);
     allIssuesCar.innerHTML ="";
   
     if(status === "all"){
         allCard(issueAllCardInfo); 
         countIssues(issueAllCardInfo.length);
+        // removeLoading(true);
   }
-  if(status === "open"){
+   else if(status === "open"){
     const openCard =issueAllCardInfo.filter(issue=> issue.status === "open");
     allCard(openCard);
+
+    // removeLoading(false);
     countIssues(openCard.length);
   }
-  if(status === "closed"){
+  else if(status === "closed"){
     const closeCard =issueAllCardInfo.filter(issue=> issue.status === "closed");
     allCard(closeCard);
     countIssues(closeCard.length);
+    // removeLoading(true);
   }
+  
+  removeLoading(false)
+    
+
  
 }
 async function issuesInfo(id){
+    removeLoading(true);
     const res = await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
     const json =await res.json();
     displayDitails (json.data);
 
 }
     function displayDitails(data){
+        let labelsHTML = "";
+        data.labels.forEach(label => {
+            let badgeClass = "bg-gray-100 text-gray-600";
+            
+          
+            if(label.toLowerCase() === 'bug') {
+                badgeClass = "bg-[#FEE2E2] text-[#EF4444]";
+            }
+            if(label.toLowerCase() === 'help wanted') {
+                badgeClass = "bg-[#FEF9C3] text-[#EAB308]";
+            }
+            if(label.toLowerCase() === 'enhancement') {
+                badgeClass = "bg-[#DCFCE7] text-[#22C55E]";
+            }
+            if(label.toLowerCase() === 'good first issue'){
+                 badgeClass = "bg-[#FEF9C3] text-[#EAB308]";
+            }
+
+            
+            labelsHTML += `<div class="badge border-none font-bold text-[10px] uppercase p-3 ${badgeClass}">${label}</div>`;
+        });
         issueDitais.innerHTML =`
       <div class="modal-box">
                     <div >
                         <div class="space-y-4">
-                            <h2 class="text-2xl font-bold ">${data.title}</h2>
+                            <h2 class="text-xl font-bold ">${data.title}</h2>
                             <p class=" ">
                             <div class="badge bg-green-600 text-white">${data.status}</div> <span class="text-gray-500">. Opened by ${data.assignee} .
-                                ${new Date(issue.updatedAt).toLocaleDateString()}</span></p>
+                                ${new Date(data.updatedAt).toLocaleDateString()}</span></p>
                             <div class="flex gap-3">
-
+                               ${labelsHTML} 
                             </div>
-                            <p class="font-semibold opacity-60">The navigation menu doesn't collapse properly on mobile devices. Need to fix the
-                                responsive behavior.</p>
+                            <p class="font-semibold opacity-60">${data.description}</p>
                             <div class="flex p-5 bg-slate-200 rounded-xl">
                                 <div class="mr-20">
                                     <p class="opacity-60 mb-1">Assignee:</p>
-                                    <h4 class="font-bold text-lg">Fahim Ahmed</h4>
+                                    <h4 class="font-bold text-lg">${data.assignee}</h4>
                                 </div>
                                 <div class="mr-20">
                                     <p class="opacity-60 mb-1">Priority:</p>
@@ -147,7 +204,9 @@ async function issuesInfo(id){
                 </div>
     `
     issueDitais.showModal();
+    removeLoading(false);
     }
     
 
 allIssues();
+allbtnActive(all-btn);
