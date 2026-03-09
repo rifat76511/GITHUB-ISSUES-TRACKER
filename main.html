@@ -7,6 +7,7 @@
     <title>GitHub-Issues-Tracker</title>
     <!-- page icon -->
     <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,7 +21,7 @@
 
 <body class="bg-[#F8FAFC]">
     <nav class="mb-20 ">
-        <div class="flex flex-row lg:flex-col lg:gap-4 navbar bg-base-100 shadow-sm">
+        <div class="flex lg:flex-row flex-col gap-4 navbar bg-base-100 shadow-sm">
             <div class="flex-1">
                 <a class="btn btn-ghost text-xl">
                     <img class="w-10" src="./assets/github-logo.png" alt="">
@@ -28,7 +29,25 @@
                 </a>
             </div>
             <div class="flex gap-2">
-                <input id="Search-box" type="text" placeholder="Search issues..." class="input input-bordered w-12 lg:w-24 md:w-auto  " />
+              
+
+<label class="input">
+  <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <g
+      stroke-linejoin="round"
+      stroke-linecap="round"
+      stroke-width="2.5"
+      fill="none"
+      stroke="currentColor"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <path d="m21 21-4.3-4.3"></path>
+    </g>
+  </svg>
+  <input id="Search-box" type="search" required placeholder="Search issues..." class="input input-bordered w-24 md:w-auto  "/>
+</label>
+
+
                 <button id="Search-btn" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Issue</button>
             </div>
         </div>
@@ -36,7 +55,7 @@
     <main>
         <section class="w-9/12 mx-auto my-5">
             <div class="flex gap-3 p-4 bg-white rounded-xl shadow-sm allbtn">
-                <div onclick="allbtnActive('all-btn'); filterIssues('all')" class="btn btn-primary " id="all-btn">All
+                <div onclick="allbtnActive('all-btn'); filterIssues('all')" class="btn " id="all-btn">All
                 </div>
                 <div onclick="allbtnActive('open-btn'); filterIssues('open')" class="btn  " id="open-btn">Open</div>
                 <div onclick="allbtnActive('closed-btn'); filterIssues('closed')" class="btn  " id="closed-btn">closed

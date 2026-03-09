@@ -115,7 +115,8 @@ function filterIssues(status){
     removeLoading(true);
     allIssuesCar.innerHTML ="";
   
-    if(status === "all"){
+   setTimeout(()=>{
+ if(status === "all"){
         allCard(issueAllCardInfo); 
         countIssues(issueAllCardInfo.length);
         // removeLoading(true);
@@ -134,7 +135,9 @@ function filterIssues(status){
     // removeLoading(true);
   }
   
-  removeLoading(false)
+  removeLoading(false);
+
+   },300);
     
 
  
@@ -209,4 +212,4 @@ async function issuesInfo(id){
     
 
 allIssues();
-allbtnActive(all-btn);
+allbtnActive("all-btn");
