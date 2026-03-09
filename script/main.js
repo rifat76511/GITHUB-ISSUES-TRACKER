@@ -48,23 +48,33 @@ const allCard =(issues)=>{
       let labelsHTML = "";
         issue.labels.forEach(label => {
             let badgeClass = "bg-gray-100 text-gray-600";
-            
+            let icon = "";
           
             if(label.toLowerCase() === 'bug') {
                 badgeClass = "bg-[#FEE2E2] text-[#EF4444]";
+                icon = '<i class="fa-solid fa-bug mr-1"></i>';
             }
             if(label.toLowerCase() === 'help wanted') {
                 badgeClass = "bg-[#FEF9C3] text-[#EAB308]";
+                icon = '<i class="fa-regular fa-hand-spock"></i>';
             }
             if(label.toLowerCase() === 'enhancement') {
                 badgeClass = "bg-[#DCFCE7] text-[#22C55E]";
+                icon = '<i class="fa-solid fa-bolt"></i>';
             }
             if(label.toLowerCase() === 'good first issue'){
                  badgeClass = "bg-[#FEF9C3] text-[#EAB308]";
+                 icon = '<i class="fa-solid fa-star"></i>';
+
+                
             }
 
+               
+                icon = '<i class="fa-solid fa-book"></i>';
+           
+
             
-            labelsHTML += `<div class="badge border-none font-bold text-[10px] uppercase p-3 ${badgeClass}">${label}</div>`;
+            labelsHTML += `<div class="badge border-none font-bold text-[10px] uppercase p-3 ${badgeClass}">${icon} ${label}</div>`;
         });
     const card = document.createElement("div");
     card.setAttribute("onclick", `issuesInfo(${issue.id})`);
@@ -153,23 +163,36 @@ async function issuesInfo(id){
         let labelsHTML = "";
         data.labels.forEach(label => {
             let badgeClass = "bg-gray-100 text-gray-600";
-            
+            let icon = "";
           
             if(label.toLowerCase() === 'bug') {
                 badgeClass = "bg-[#FEE2E2] text-[#EF4444]";
+                icon = '<i class="fa-solid fa-bug mr-1"></i>';
             }
-            if(label.toLowerCase() === 'help wanted') {
+            else if(label.toLowerCase() === 'help wanted') {
                 badgeClass = "bg-[#FEF9C3] text-[#EAB308]";
+                icon = '<i class="fa-regular fa-hand-spock"></i>';
             }
-            if(label.toLowerCase() === 'enhancement') {
+            else if(label.toLowerCase() === 'enhancement') {
                 badgeClass = "bg-[#DCFCE7] text-[#22C55E]";
+                icon = '<i class="fa-solid fa-bolt"></i>';
             }
-            if(label.toLowerCase() === 'good first issue'){
+            else if(label.toLowerCase() === 'good first issue'){
                  badgeClass = "bg-[#FEF9C3] text-[#EAB308]";
+                 icon = '<i class="fa-solid fa-star"></i>';
+
+                
+            }else{
+
+                icon = '<i class="fa-solid fa-book"></i>';
+
             }
 
+               
+           
+
             
-            labelsHTML += `<div class="badge border-none font-bold text-[10px] uppercase p-3 ${badgeClass}">${label}</div>`;
+            labelsHTML += `<div class="badge border-none font-bold text-[10px] uppercase p-3 ${badgeClass}">${icon} ${label}</div>`;
         });
         issueDitais.innerHTML =`
       <div class="modal-box">
