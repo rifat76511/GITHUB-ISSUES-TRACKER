@@ -35,10 +35,12 @@
     </nav>
     <main>
         <section class="w-9/12 mx-auto my-5">
-            <div class="flex gap-3 p-4 bg-white rounded-xl shadow-sm">
-                <div class="btn  ">All</div>
-                <div class="btn  ">Open</div>
-                <div class="btn  ">closed</div>
+            <div class="flex gap-3 p-4 bg-white rounded-xl shadow-sm allbtn">
+                <div onclick="allbtnActive('all-btn'); filterIssues('all')" class="btn btn-primary " id="all-btn">All
+                </div>
+                <div onclick="allbtnActive('open-btn'); filterIssues('open')" class="btn  " id="open-btn">Open</div>
+                <div onclick="allbtnActive('closed-btn'); filterIssues('closed')" class="btn  " id="closed-btn">closed
+                </div>
             </div>
         </section>
         <section class=" w-9/12 mx-auto bg-white rounded-xl shadow-sm ">
@@ -48,7 +50,7 @@
                         <div class="flex items-center gap-2">
                             <img src="./assets/Aperture.png" alt="" class="w-12 h-12 bg-[#ECE4FF] rounded-full p-2">
                             <div class="">
-                                <h2 class="font-semibold text-xl"><span>50</span> Issues</h2>
+                                <h2 class="font-semibold text-xl"><span id="count-issues">0</span> Issues</h2>
                                 <h5 class="text-xs inline">Track and manage your project issues</h5>
                             </div>
                         </div>
@@ -61,14 +63,22 @@
                     </div>
                 </div>
             </div>
-
-            <section id="card-section" class="grid grid-cols-4 gap-6 p-6">
-                
-
-
+            <section class="flex items-center justify-center p-20 hidden" id="loading-section">
+                <span class="loading loading-dots loading-xl"></span>
             </section>
+            <div id="card-section" class="grid grid-cols-4 gap-6 p-6">
 
+
+
+            </div>
+
+            <!-- Open the modal using ID.showModal() method -->
+            
+            <dialog id="iassueDitail" class="modal">
+              
+            </dialog>
         </section>
+
     </main>
     <!-- js file linked -->
     <script src="./script/main.js"></script>
