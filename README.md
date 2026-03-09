@@ -4,3 +4,6 @@
  - let: Introduced in ES6, let is block-scoped (only accessible within { }). It can be updated but cannot be re-declared within the same scope.
 
  - const: Also block-scoped, but it is used for variables that should not change. Once assigned, its value cannot be updated or re-declared.
+
+ ## 2 . What is the spread operator (...)?
+- The spread operator allows an iterable (like an array or object) to be expanded into individual elements. It is commonly used to make shallow copies of arrays or to combine multiple objects/arrays into one. For example: [...oldArray, newItem].
