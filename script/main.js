@@ -82,7 +82,7 @@ const allCard =(issues)=>{
     card.innerHTML =`
      <div class="flex justify-between mb-4">
                         <img  src="./assets/${issue.status == "open" ? "Open-Status.png" : "Closed- Status .png"}" alt="" >
-                        <div class="badge badge-soft ${issue.priority == "high" ? "badge-error" :issue.priority == "medium" ? "badge-warning" : "bg-[#EEEFF2]"}">${issue.priority}</div>
+                        <div class="badge badge-soft ${issue.priority == "high" ? "badge-error" :issue.priority == "medium" ? "badge-warning" : "bg-[#EEEFF2]"}">${issue.priority.toUpperCase()}</div>
 
                     </div>
                     <div onclick ="issuesInfo(${issue.id})" class="mb-4 space-y-2">
