@@ -2,6 +2,8 @@
 
 A modern and dynamic web application that allows users to fetch and track issues from any public GitHub repository in real-time. This project demonstrates advanced API integration and asynchronous JavaScript handling.
 
+
+
 ## 🔗 Project Links
 - **Live Demo:** [https://rifatalvi.github.io/GITHUB-ISSUES-TRACKER/](https://rifatalvi.github.io/GITHUB-ISSUES-TRACKER/)
 - **Source Code:** [https://github.com/rifatalvi/GITHUB-ISSUES-TRACKER](https://github.com/rifatalvi/GITHUB-ISSUES-TRACKER)
@@ -12,8 +14,7 @@ A modern and dynamic web application that allows users to fetch and track issues
 The **GitHub Issues Tracker** provides a seamless interface for developers to search for public repositories and view their current open issues. By leveraging the GitHub REST API, it fetches real-time data and renders it dynamically without needing a page reload.
 
 ## 📸 Screenshot
-![Project Screenshot](https://raw.githubusercontent.com/rifatalvi/GITHUB-ISSUES-TRACKER/main/screenshot.png) 
-*(Note: Upload a screenshot to your repo and update this link for a better presentation)*
+<img width="1353" height="631" alt="Screenshot 2026-04-09 083303" src="https://github.com/user-attachments/assets/6f10a5a4-3273-4837-8864-aa855fa20e2d" /><img width="1352" height="629" alt="Screenshot 2026-04-09 083333" src="https://github.com/user-attachments/assets/8c67c2d7-f91e-4a3d-9d99-93668c33a1c9" />
 
 ---
 
